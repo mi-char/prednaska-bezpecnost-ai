@@ -1,41 +1,24 @@
-# Bezpečnost AI: web k akci
+# Bezpečnost AI: web pro publikum
 
-## Česky
-
-Tento repozitář obsahuje podklady a plán připravovaného webu k přednášce o bezpečnosti AI pro veřejnost a netechnické návštěvníky. Web má nabídnout pozvánku, dobrovolné krátké ukázky o přestávce a praktické zdroje dostupné i po akci.
-
-## English
-
-This repository contains the materials and implementation plan for a website accompanying a public talk on AI safety, intended for a general, non-technical audience. The website is planned to provide an event invitation, optional short interactive examples during the break, and practical resources available after the event.
-
-The website is in `web/`. Before publication, the selection of examples, event details, sources, media and the operator must be confirmed.
+Statická stránka s přehledem slidů přednášky o bezpečnosti AI, ke které se lze vrátit po akci.
+Obsah se generuje z PowerPointové prezentace v samostatném pracovním projektu (plán převodu:
+`work/web/PLAN.md` v něm); tento repozitář obsahuje jen hotový web.
 
 ## Stav
 
-Webový projekt je ve složce `web/`. Před zveřejněním je nutné potvrdit výběr ukázek, údaje o akci, zdroje, média a provozovatele; nezveřejňovat neověřené údaje ani smyšlené registrační odkazy.
+Repozitář je připravený na nový obsah, web zatím není vytvořen. Starý prototyp (přestávkový web
+v Astro) je zachován pod tagem `archiv-prestavkovy-prototyp`.
 
-Výchozím podkladem je místní pracovní plán webu. Projekt je samostatný; k práci nepotřebuje soubory jiného projektu. Změny plánů v jiných projektech se sem nepřenášejí automaticky.
+## Struktura
 
-- [Pokyny pro práci na projektu](AGENTS.md)
-- [Pracovní plán a podklady pro web](docs/website-content.md)
+- `site/` – hotový statický web (HTML, CSS, `assets/`); jediná složka, která se publikuje.
+- `.github/workflows/deploy.yml` – ruční nasazení složky `site/` na GitHub Pages.
 
-Podklady obsahují detailní plán implementace, návrhy čtyř krátkých misí, reakce na jednotlivé volby, postup při incidentu, zdroje k ověření a kontrolní podmínky před spuštěním. Zaznamenávají také dosud nepotvrzené údaje a podmínky pro použití médií. Jde o pracovní návrhy, nikoli schválený obsah.
+Očekávaná adresa: https://mi-char.github.io/prednaska-bezpecnost-ai/ (zatím neověřeno).
+Odkazy ve webu musí být relativní, aby fungovaly v podadresáři.
 
-## Zamýšlené řešení
+## Pravidla
 
-- Statický web s oddělenou pozvánkou a přestávkovým rozcestníkem, které sdílejí ukázky a zdroje.
-- Dobrovolné krátké mise s vysvětlením a kartou praktického kroku a samostatný bodovaný test, bez žebříčků, časového limitu či ukládání postupu.
-- Statické generování pomocí Astro, vlastní CSS a malé interaktivní komponenty v Preactu; bez účtů, databáze a serverové AI.
-- Přístupné ovládání, použitelnost na telefonu a dostupný obsah i bez JavaScriptu.
-- Odpovědi návštěvníků zpracovávat pouze v prohlížeči, bez ukládání a odesílání.
-- Hostování je plánováno na GitHub Pages na uživatelově účtu; konkrétní repozitář a adresu je třeba určit a před nasazením ověřit podmínky služby.
-
-Konkrétní stránky, ukázky, zdroje, média a údaje o akci vzniknou až při navazující realizaci podle aktuálního a potvrzeného zadání.
-
-## Lokální spuštění
-
-Ve složce `web/` spusťte `npm install` a následně `npm run dev`. Produkční statické soubory vzniknou příkazem `npm run build` ve složce `web/dist/`; `npm run preview` spustí jejich místní náhled. Pro ověření umístění v podadresáři lze při sestavení nastavit proměnnou `SITE_BASE`, například na `/ai-safety-web/`.
-
-## Publikace na GitHub Pages
-
-Workflow `.github/workflows/deploy.yml` sestaví obsah složky `web/` pro adresu nastavenou v GitHub Pages. Spouští se výhradně ručně z karty Actions; samotný push web nezveřejní. Před jeho spuštěním je nutné potvrdit obsah, provést kontroly před zveřejněním a odsouhlasit nasazení. Aby bylo workflow v GitHubu dostupné, musí být nejprve součástí výchozí větve repozitáře.
+- Obsah `site/` se nepíše ručně, ale kopíruje se z výstupu převodu.
+- Bez externích fontů, skriptů, analytiky a cookies.
+- Nasazení pouze na výslovný pokyn.
